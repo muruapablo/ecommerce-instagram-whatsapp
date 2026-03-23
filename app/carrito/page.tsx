@@ -10,7 +10,6 @@ import { useRouter } from 'next/navigation'
 export default function CarritoPage() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCart()
   const [loading, setLoading] = useState(false)
-  const router = useRouter()
 
   const handleCheckout = async () => {
     if (items.length === 0) return
@@ -52,11 +51,11 @@ export default function CarritoPage() {
     return (
       <div className="min-h-screen bg-sand-50 dark:bg-charcoal-900 transition-colors duration-300 py-12">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl font-bold text-charcoal-900 dark:text-sand-50 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-charcoal-900 dark:text-sand-50 mb-8 text-balance">
             🛒 Carrito de Compras
           </h1>
           
-          <div className="bg-white dark:bg-charcoal-800 rounded-2xl border-2 border-charcoal-900 dark:border-sand-200/30 p-12 text-center">
+          <div className="bg-white dark:bg-charcoal-800 rounded-2xl border-2 border-charcoal-900 dark:border-sand-200/30 p-8 sm:p-12 text-center">
             <div className="mb-6">
               <svg
                 className="w-32 h-32 mx-auto text-charcoal-300 dark:text-charcoal-600"
@@ -94,8 +93,8 @@ export default function CarritoPage() {
     <div className="min-h-screen bg-sand-50 dark:bg-charcoal-900 transition-colors duration-300 py-12">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-4xl font-bold text-charcoal-900 dark:text-sand-50">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-charcoal-900 dark:text-sand-50 text-balance">
             🛒 Carrito ({totalItems} {totalItems === 1 ? 'item' : 'items'})
           </h1>
           <button
@@ -112,7 +111,7 @@ export default function CarritoPage() {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white dark:bg-charcoal-800 rounded-xl border-2 border-charcoal-900 dark:border-sand-200/30 p-4 flex gap-4 transition-all duration-200"
+                className="bg-white dark:bg-charcoal-800 rounded-xl border-2 border-charcoal-900 dark:border-sand-200/30 p-4 flex flex-col sm:flex-row gap-4 transition-all duration-200"
               >
                 {/* Product Image */}
                 <div className="relative w-24 h-24 flex-shrink-0 bg-sand-100 dark:bg-charcoal-700 rounded-lg overflow-hidden border-2 border-charcoal-900 dark:border-sand-200/30">
@@ -128,10 +127,10 @@ export default function CarritoPage() {
                 </div>
 
                 {/* Product Info */}
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <Link
                     href={`/producto/${item.slug}`}
-                    className="font-bold text-lg text-charcoal-900 dark:text-sand-50 hover:text-[#D74B4B] dark:hover:text-[#D74B4B] transition-colors"
+                    className="font-bold text-lg text-charcoal-900 dark:text-sand-50 hover:text-[#D74B4B] dark:hover:text-[#D74B4B] transition-colors line-clamp-2 break-words"
                   >
                     {item.nombre}
                   </Link>
@@ -140,7 +139,7 @@ export default function CarritoPage() {
                   </p>
 
                   {/* Quantity Controls */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       className="w-8 h-8 rounded border-2 border-charcoal-900 dark:border-sand-200/30 bg-sand-100 dark:bg-charcoal-700 hover:bg-sand-200 dark:hover:bg-charcoal-600 font-bold transition-colors"
@@ -165,8 +164,8 @@ export default function CarritoPage() {
                 </div>
 
                 {/* Subtotal and Remove */}
-                <div className="flex flex-col items-end justify-between">
-                  <p className="font-bold text-xl text-charcoal-900 dark:text-sand-50">
+                <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between gap-3 sm:gap-0">
+                  <p className="font-bold text-lg sm:text-xl text-charcoal-900 dark:text-sand-50">
                     {store.currencySymbol}{(item.precio * item.quantity).toLocaleString('es-AR')}
                   </p>
                   <button
@@ -182,7 +181,7 @@ export default function CarritoPage() {
 
           {/* Summary */}
           <div className="md:col-span-1">
-            <div className="bg-white dark:bg-charcoal-800 rounded-xl border-2 border-charcoal-900 dark:border-sand-200/30 p-6 sticky top-24">
+            <div className="bg-white dark:bg-charcoal-800 rounded-xl border-2 border-charcoal-900 dark:border-sand-200/30 p-6 md:sticky md:top-24">
               <h2 className="text-2xl font-bold text-charcoal-900 dark:text-sand-50 mb-4">
                 Resumen
               </h2>

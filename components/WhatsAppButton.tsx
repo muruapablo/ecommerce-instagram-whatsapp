@@ -19,7 +19,7 @@ export default function WhatsAppButton({ productName, productSlug }: WhatsAppBut
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-full py-5 px-8 rounded-lg font-bold text-white text-lg bg-gradient-to-r from-[#5A5A5A] to-[#3D2424] dark:from-[#6B2E2E] dark:to-[#3D2424] hover:from-[#3D2424] hover:to-[#1A1A1A] dark:hover:from-[#3D2424] dark:hover:to-[#1A1A1A] border-2 border-charcoal-900 dark:border-sand-200/30 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] dark:shadow-[6px_6px_0px_0px_rgba(107,46,46,0.5)] hover:shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[3px_3px_0px_0px_rgba(107,46,46,0.7)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 flex items-center justify-center gap-3"
+      className="w-full py-5 px-8 rounded-lg font-bold text-white text-lg bg-gradient-to-r from-[#25D366] to-[#128C7E] dark:from-[#1FB954] dark:to-[#0F766E] hover:from-[#1FB954] hover:to-[#0F766E] dark:hover:from-[#16A34A] dark:hover:to-[#0E7490] border-2 border-charcoal-900 dark:border-sand-200/30 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] dark:shadow-[6px_6px_0px_0px_rgba(16,185,129,0.35)] hover:shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[3px_3px_0px_0px_rgba(16,185,129,0.5)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 flex items-center justify-center gap-3"
     >
       <svg
         className="w-6 h-6"

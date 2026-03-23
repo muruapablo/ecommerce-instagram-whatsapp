@@ -60,7 +60,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               <div className="h-1 w-24 bg-gradient-to-r from-clay-500 to-clay-700 dark:from-clay-400 dark:to-clay-600 rounded-full shadow-sm"></div>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-charcoal-900 dark:text-sand-50 mb-6 tracking-tight leading-none transition-colors duration-300">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-charcoal-900 dark:text-sand-50 mb-6 tracking-tight leading-[0.95] text-balance transition-colors duration-300">
               {store.name}
             </h1>
             
