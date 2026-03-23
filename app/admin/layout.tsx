@@ -7,19 +7,19 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-charcoal-900 transition-colors duration-300">
-      <nav className="bg-white dark:bg-charcoal-800 border-b border-gray-200 dark:border-sand-200/20 transition-colors duration-300">
+    <div className="min-h-screen bg-surface dark:bg-primary transition-colors duration-300">
+      <nav className="bg-surface-container-lowest dark:bg-primary-container border-b border-surface-container-high dark:border-on-primary/10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-8">
-              <Link href="/admin" className="text-xl font-bold text-gray-900 dark:text-sand-50 transition-colors">
+              <Link href="/admin" className="text-xl font-bold text-on-surface dark:text-on-primary transition-colors">
                 Admin - {store.name}
               </Link>
               
               <div className="hidden md:flex items-center gap-4">
                 <Link
                   href="/admin/productos"
-                  className="text-gray-600 dark:text-sand-400 hover:text-gray-900 dark:hover:text-sand-50 transition-colors"
+                  className="text-on-surface-variant dark:text-on-primary-fixed-variant hover:text-on-surface dark:hover:text-on-primary transition-colors"
                 >
                   Productos
                 </Link>
@@ -30,7 +30,7 @@ export default function AdminLayout({
               <Link
                 href="/"
                 target="_blank"
-                className="text-gray-600 dark:text-sand-400 hover:text-gray-900 dark:hover:text-sand-50 transition-colors"
+                className="text-on-surface-variant dark:text-on-primary-fixed-variant hover:text-on-surface dark:hover:text-on-primary transition-colors"
               >
                 Ver tienda
               </Link>

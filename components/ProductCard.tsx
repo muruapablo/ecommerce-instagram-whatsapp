@@ -18,65 +18,63 @@ export default function ProductCard({ producto, index = 0 }: ProductCardProps) {
       style={{ animationDelay }}
     >
       <article className="relative h-full">
-        {/* Decorative corner gradient accent */}
-        <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-[#D74B4B]/30 via-[#8B3A3A]/20 to-transparent dark:from-[#8B3A3A]/30 dark:via-[#6B2E2E]/20 blur-2xl group-hover:blur-3xl group-hover:scale-125 transition-all duration-500 z-0" />
-        
-        {/* Main card */}
-        <div className="relative card card-hover h-full flex flex-col overflow-hidden transition-all duration-300 group-hover:shadow-[8px_8px_0_rgba(0,0,0,0.2)] dark:group-hover:shadow-[8px_8px_0_rgba(255,107,107,0.3)]">
-          {/* Image container */}
-          <div className="relative aspect-square bg-sand-200 dark:bg-charcoal-800 overflow-hidden">
+        {/* MonoBoutique: No borders, only tonal layering */}
+        <div className="relative bg-surface-container-lowest dark:bg-primary-fixed-dim h-full flex flex-col overflow-hidden transition-all duration-500 group-hover:shadow-ambient-lg">
+          
+          {/* Image container - Asymmetry: bleeds to edges */}
+          <div className="relative aspect-square bg-surface-container dark:bg-primary-container overflow-hidden">
             <Image
               src={producto.imagen || '/placeholder.jpg'}
               alt={producto.nombre}
               fill
-              className="object-cover img-zoom"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
             
-            {/* Vibrant gradient overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#3D2424]/80 via-[#8B3A3A]/30 to-transparent dark:from-[#6B2E2E]/80 dark:via-[#8B3A3A]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Subtle overlay on hover (no harsh gradients) */}
+            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 dark:group-hover:bg-primary/30 transition-all duration-500" />
             
-            {/* Stock overlay */}
+            {/* Stock overlay - MonoBoutique style */}
             {producto.stock === 0 && (
-              <div className="absolute inset-0 bg-charcoal-900/90 dark:bg-charcoal-950/95 flex items-center justify-center backdrop-blur-sm">
+              <div className="absolute inset-0 bg-primary/90 dark:bg-primary/95 flex items-center justify-center backdrop-blur-xs">
                 <div className="text-center">
-                  <span className="block text-sand-50 font-bold text-xl mb-1">AGOTADO</span>
-                  <span className="block text-sand-300 dark:text-sand-400 text-sm">Consultar disponibilidad</span>
+                  <span className="block font-headline font-bold text-lg text-on-primary uppercase tracking-wide mb-1">Agotado</span>
+                  <span className="block font-body text-sm text-on-primary-fixed-variant">Consultar disponibilidad</span>
                 </div>
               </div>
             )}
             
-            {/* Low stock badge with gradient */}
+            {/* Low stock badge - Subtle, not aggressive */}
             {producto.stock > 0 && producto.stock <= 5 && (
-              <div className="absolute top-3 right-3 bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] to-[#6B2E2E] text-white px-3 py-1 text-xs font-bold tracking-wide shadow-brutal-sm animate-pulse">
+              <div className="absolute top-3 right-3 bg-tertiary text-on-tertiary px-3 py-1.5 text-xs font-headline font-bold tracking-wide rounded-sm">
                 ÚLTIMAS {producto.stock}
               </div>
             )}
           </div>
           
-          {/* Content */}
-          <div className="p-5 flex-grow flex flex-col gap-3 bg-cream dark:bg-charcoal-800 transition-colors duration-300">
-            {/* Product name */}
-            <h3 className="font-bold text-charcoal-900 dark:text-sand-50 text-lg leading-tight line-clamp-2 group-hover:gradient-text transition-all duration-300">
+          {/* Content - Inset with generous spacing */}
+          <div className="px-5 py-5 flex-grow flex flex-col gap-3 bg-surface-container-lowest dark:bg-primary-fixed-dim transition-colors duration-300">
+            {/* Product name - Manrope with tight tracking */}
+            <h3 className="font-headline font-bold text-on-surface dark:text-on-primary text-lg leading-tight tracking-tighter-print line-clamp-2 group-hover:text-primary-fixed dark:group-hover:text-on-primary-fixed-variant transition-colors duration-300">
               {producto.nombre}
             </h3>
             
-            {/* Decorative divider with gradient */}
-            <div className="h-[2px] w-12 bg-charcoal-900/20 dark:bg-sand-50/20 group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-[#D74B4B] group-hover:via-[#8B3A3A] group-hover:to-[#3D2424] dark:group-hover:from-[#8B3A3A] dark:group-hover:via-[#6B2E2E] dark:group-hover:to-[#3D2424] transition-all duration-500" />
+            {/* MonoBoutique: No divider line, use spacing.0.5 gap instead */}
+            <div className="h-1" />
             
-            {/* Price */}
+            {/* Price - Editorial style */}
             <div className="mt-auto">
-              <div className="flex items-baseline gap-1">
-                <span className="text-charcoal-600 dark:text-sand-400 text-sm font-medium transition-colors">{store.currencySymbol}</span>
-                <span className="font-serif text-4xl font-normal text-charcoal-900 dark:text-sand-50 tracking-tighter leading-none transition-colors">
+              <div className="flex items-baseline gap-1.5">
+                <span className="font-body text-sm font-medium text-on-surface-variant dark:text-on-primary-fixed-variant transition-colors">{store.currencySymbol}</span>
+                <span className="font-headline text-3xl font-semibold text-on-surface dark:text-on-primary tracking-tight leading-none transition-colors">
                   {producto.precio.toLocaleString('es-AR')}
                 </span>
               </div>
             </div>
           </div>
           
-          {/* Vibrant gradient hover indicator */}
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#D74B4B] via-[#8B3A3A] to-[#3D2424] dark:from-[#8B3A3A] dark:via-[#6B2E2E] dark:to-[#3D2424] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          {/* Subtle bottom accent (no harsh colored bars) */}
+          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-surface-variant dark:bg-primary-container transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
         </div>
       </article>
     </Link>

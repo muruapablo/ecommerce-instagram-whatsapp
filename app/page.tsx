@@ -46,33 +46,33 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const searchQuery = searchParams.search
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sand-50 via-cream to-sand-100 dark:from-[#1A1625] dark:via-[#1A1625] dark:to-[#2D2640] transition-colors duration-300" id="main-content">
+    <div className="min-h-screen bg-surface dark:bg-primary transition-colors duration-300" id="main-content">
       {/* Hero Section */}
-      <div className="relative overflow-hidden border-b-2 border-charcoal-900 dark:border-sand-200/20 bg-gradient-to-br from-sand-100 via-cream to-clay-50 dark:from-[#2D2640] dark:via-[#1A1625] dark:to-[#2D2640] transition-colors duration-300">
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#D74B4B]/20 to-transparent dark:from-[#8B3A3A]/15 dark:to-transparent blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#6B2E2E]/20 to-transparent dark:from-[#6B2E2E]/15 dark:to-transparent blur-3xl" />
+      <div className="relative overflow-hidden bg-surface-container-low dark:bg-primary-container transition-colors duration-300">
+        {/* Ambient depth orbs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 dark:bg-secondary/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-surface-variant/60 dark:bg-primary-fixed/20 blur-3xl pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
-          <div className="text-center animate-fadeIn">
-            {/* Decorative element */}
+          <div className="text-center animate-fade-in">
+            {/* Green accent line */}
             <div className="inline-block mb-6">
-              <div className="h-1 w-24 bg-gradient-to-r from-clay-500 to-clay-700 dark:from-clay-400 dark:to-clay-600 rounded-full shadow-sm"></div>
+              <div className="h-px w-24 bg-gradient-to-r from-secondary/30 via-secondary to-secondary/30"></div>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-charcoal-900 dark:text-sand-50 mb-6 tracking-tight leading-[0.95] text-balance transition-colors duration-300">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-headline font-black text-on-surface dark:text-on-primary mb-6 tracking-tighter-print leading-[0.95] text-balance transition-colors duration-300">
               {store.name}
             </h1>
             
-            <p className="text-lg md:text-xl text-charcoal-600 dark:text-sand-300 max-w-2xl mx-auto leading-relaxed font-medium transition-colors duration-300">
+            <p className="text-lg md:text-xl text-on-surface-variant dark:text-on-primary-fixed-variant max-w-2xl mx-auto leading-relaxed font-body transition-colors duration-300">
               {store.description}
             </p>
 
-            {/* Decorative bottom accent */}
+            {/* Subtle accent dots */}
             <div className="mt-8 flex justify-center gap-2">
-              <div className="h-2 w-2 bg-[#D74B4B] dark:bg-[#D74B4B] rounded-full animate-float"></div>
-              <div className="h-2 w-2 bg-[#8B3A3A] dark:bg-[#8B3A3A] rounded-full animate-float" style={{animationDelay: '0.2s'}}></div>
-              <div className="h-2 w-2 bg-[#6B2E2E] dark:bg-[#6B2E2E] rounded-full animate-float" style={{animationDelay: '0.4s'}}></div>
+              <div className="h-1.5 w-1.5 bg-secondary rounded-full animate-float"></div>
+              <div className="h-1.5 w-1.5 bg-secondary/60 rounded-full animate-float" style={{animationDelay: '0.2s'}}></div>
+              <div className="h-1.5 w-1.5 bg-secondary/30 rounded-full animate-float" style={{animationDelay: '0.4s'}}></div>
             </div>
           </div>
         </div>
@@ -82,11 +82,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Search Results Header */}
         {searchQuery && (
-          <div className="mb-8 animate-fadeIn">
-            <h2 className="text-2xl md:text-3xl font-black text-charcoal-900 dark:text-sand-50 mb-2 transition-colors duration-300">
+          <div className="mb-8 animate-fade-in">
+            <h2 className="text-2xl md:text-3xl font-headline font-black text-on-surface dark:text-on-primary mb-2 transition-colors duration-300">
               Resultados para &ldquo;{searchQuery}&rdquo;
             </h2>
-            <p className="text-charcoal-600 dark:text-sand-300 font-medium transition-colors duration-300">
+            <p className="text-on-surface-variant dark:text-on-primary-fixed-variant font-body transition-colors duration-300">
               {filteredProductos.length} {filteredProductos.length === 1 ? 'producto encontrado' : 'productos encontrados'}
             </p>
           </div>
@@ -96,22 +96,22 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
         {/* No Results Message */}
         {searchQuery && filteredProductos.length === 0 && (
-          <div className="text-center py-16 animate-fadeIn">
+          <div className="text-center py-16 animate-fade-in">
             <div className="max-w-md mx-auto">
-              <div className="w-20 h-20 bg-sand-200 dark:bg-charcoal-700 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                <svg className="w-10 h-10 text-charcoal-400 dark:text-sand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-surface-container dark:bg-primary-container rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                <svg className="w-10 h-10 text-on-surface-variant dark:text-on-primary-fixed-variant" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-black text-charcoal-900 dark:text-sand-50 mb-3 transition-colors duration-300">
+              <h3 className="text-2xl font-headline font-black text-on-surface dark:text-on-primary mb-3 transition-colors duration-300">
                 No encontramos resultados
               </h3>
-              <p className="text-charcoal-600 dark:text-sand-300 mb-6 font-medium transition-colors duration-300">
+              <p className="text-on-surface-variant dark:text-on-primary-fixed-variant mb-6 font-body transition-colors duration-300">
                 Intenta con otras palabras o explorá todos los productos
               </p>
               <a
                 href="/"
-                className="inline-block px-6 py-3 bg-clay-600 hover:bg-clay-700 text-white rounded-lg font-bold border-2 border-charcoal-900 dark:border-sand-200/30 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                className="inline-block px-6 py-3 bg-surface-container dark:bg-primary-container text-on-surface dark:text-on-primary rounded-md font-headline font-semibold hover:bg-surface-container-high dark:hover:bg-primary-fixed transition-all duration-300 shadow-ambient"
               >
                 Ver todos los productos
               </a>
@@ -121,22 +121,22 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </div>
 
       {/* Footer CTA */}
-      <div className="border-t-2 border-charcoal-900 dark:border-sand-200/20 bg-gradient-to-br from-sand-100 via-sand-50 to-sand-100 dark:from-[#2D2640] dark:via-[#1A1625] dark:to-[#2D2640] py-16 transition-colors duration-300">
+      <div className="bg-surface-container dark:bg-primary-container py-16 transition-colors duration-300">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-charcoal-900 dark:text-sand-50 mb-4 transition-colors duration-300">
+          <h2 className="text-3xl md:text-4xl font-headline font-black text-on-surface dark:text-on-primary mb-4 transition-colors duration-300">
             ¿Tenés dudas sobre algún producto?
           </h2>
-          <p className="text-charcoal-600 dark:text-sand-300 mb-8 text-lg font-medium transition-colors duration-300">
+          <p className="text-on-surface-variant dark:text-on-primary-fixed-variant mb-8 text-lg font-body transition-colors duration-300">
             Escribinos y te respondemos al instante
           </p>
           <a
             href={`https://wa.me/${store.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5A5A5A] to-[#3D2424] hover:from-[#3D2424] hover:to-[#1A1A1A] dark:from-[#6B2E2E] dark:to-[#3D2424] dark:hover:from-[#3D2424] dark:hover:to-[#1A1A1A] text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-charcoal-900 dark:border-sand-200/30 shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] dark:shadow-[6px_6px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[3px_3px_0px_0px_rgba(245,240,228,0.2)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200"
+            className="inline-flex items-center gap-3 bg-gradient-secondary hover:bg-secondary-fixed-dim text-on-secondary px-8 py-4 rounded-md font-headline font-bold text-lg transition-all duration-300 shadow-[0_4px_14px_rgba(0,109,47,0.15)] hover:shadow-[0_6px_20px_rgba(0,109,47,0.25)] group"
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 transition-transform duration-300 group-hover:scale-110"
               fill="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"

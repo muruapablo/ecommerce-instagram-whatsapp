@@ -20,13 +20,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="group relative w-10 h-5 bg-gradient-to-r from-charcoal-800 to-charcoal-700 dark:from-clay-700 dark:to-clay-600 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-clay-500/50"
+      className="group relative w-10 h-5 bg-gradient-to-r from-primary-container to-primary-fixed dark:from-secondary dark:to-secondary-fixed-dim rounded-full transition-all duration-300 hover:opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/30 dark:focus:ring-secondary/30"
       aria-label={theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
       title={theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
     >
       {/* Slider knob */}
       <div
-        className={`absolute top-0.5 w-4 h-4 bg-white dark:bg-sand-100 rounded-full shadow-md transition-all duration-300 flex items-center justify-center ${
+        className={`absolute top-0.5 w-4 h-4 bg-surface-container-lowest dark:bg-on-primary rounded-full shadow-md transition-all duration-300 flex items-center justify-center ${
           theme === 'light' ? 'left-0.5' : 'left-5'
         }`}
       >
@@ -47,7 +47,7 @@ export default function ThemeToggle() {
 
           {/* Moon icon (dark mode) */}
           <svg
-            className={`absolute inset-0 text-clay-600 transition-all duration-300 ${
+            className={`absolute inset-0 text-secondary transition-all duration-300 ${
               theme === 'dark'
                 ? 'opacity-100 scale-100'
                 : 'opacity-0 scale-0'

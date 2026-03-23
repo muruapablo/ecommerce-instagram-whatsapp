@@ -12,55 +12,55 @@ export default async function AdminProductosPage() {
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-sand-50">Productos</h1>
+        <h1 className="text-3xl font-bold text-on-surface dark:text-on-primary">Productos</h1>
         <Link
           href="/admin/productos/nuevo"
-          className="bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] dark:to-[#6B2E2E] text-white px-6 py-3 rounded-lg font-semibold hover:from-[#8B3A3A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] transition-all border-2 border-charcoal-900 dark:border-sand-200/30"
+          className="bg-gradient-primary text-on-primary px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all"
         >
           + Nuevo Producto
         </Link>
       </div>
 
       {productos.length === 0 ? (
-        <div className="bg-white dark:bg-charcoal-800 rounded-lg shadow-sm p-12 text-center border-2 border-gray-200 dark:border-sand-200/20">
-          <p className="text-gray-600 dark:text-sand-400 mb-4">No hay productos todavía</p>
+        <div className="bg-surface-container-lowest dark:bg-primary-container rounded-lg shadow-sm p-12 text-center">
+          <p className="text-on-surface-variant dark:text-on-primary-fixed-variant mb-4">No hay productos todavía</p>
           <Link
             href="/admin/productos/nuevo"
-            className="text-[#D74B4B] dark:text-[#D97676] hover:text-[#8B3A3A] dark:hover:text-[#D74B4B] font-semibold transition-colors"
+            className="text-secondary hover:opacity-80 font-semibold transition-colors"
           >
             Crear el primer producto
           </Link>
         </div>
       ) : (
-        <div className="bg-white dark:bg-charcoal-800 rounded-lg shadow-sm overflow-hidden border-2 border-gray-200 dark:border-sand-200/20">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-sand-200/20">
-            <thead className="bg-gray-50 dark:bg-charcoal-900">
+        <div className="bg-surface-container-lowest dark:bg-primary-container rounded-lg shadow-sm overflow-hidden">
+          <table className="min-w-full divide-y divide-surface-container dark:divide-on-primary/10">
+            <thead className="bg-surface-container-low dark:bg-primary">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-sand-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-on-surface-variant dark:text-on-primary-fixed-variant uppercase tracking-wider">
                   Imagen
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-sand-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-on-surface-variant dark:text-on-primary-fixed-variant uppercase tracking-wider">
                   Nombre
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-sand-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-on-surface-variant dark:text-on-primary-fixed-variant uppercase tracking-wider">
                   Precio
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-sand-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-on-surface-variant dark:text-on-primary-fixed-variant uppercase tracking-wider">
                   Stock
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-sand-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-on-surface-variant dark:text-on-primary-fixed-variant uppercase tracking-wider">
                   Estado
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-sand-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-medium text-on-surface-variant dark:text-on-primary-fixed-variant uppercase tracking-wider">
                   Acciones
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-charcoal-800 divide-y divide-gray-200 dark:divide-sand-200/20">
+            <tbody className="bg-surface-container-lowest dark:bg-primary-container divide-y divide-surface-container dark:divide-on-primary/10">
               {productos.map((producto) => (
-                <tr key={producto.id} className="hover:bg-gray-50 dark:hover:bg-charcoal-700 transition-colors">
+                <tr key={producto.id} className="hover:bg-surface-container-low dark:hover:bg-primary transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="relative w-16 h-16 bg-gray-100 dark:bg-charcoal-700 rounded border-2 border-gray-200 dark:border-sand-200/20">
+                    <div className="relative w-16 h-16 bg-surface-container dark:bg-primary rounded">
                       <Image
                         src={producto.imagen || '/placeholder.jpg'}
                         alt={producto.nombre}
@@ -71,20 +71,17 @@ export default async function AdminProductosPage() {
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="text-sm font-medium text-gray-900 dark:text-sand-50">
+                    <div className="text-sm font-medium text-on-surface dark:text-on-primary">
                       {producto.nombre}
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-sand-400">
-                      /{producto.slug}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900 dark:text-sand-50">
+                    <div className="text-sm text-on-surface dark:text-on-primary">
                       ${producto.precio.toLocaleString('es-AR')}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900 dark:text-sand-50">
+                    <div className="text-sm text-on-surface dark:text-on-primary">
                       {producto.stock} unidades
                     </div>
                   </td>
@@ -102,7 +99,7 @@ export default async function AdminProductosPage() {
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <Link
                       href={`/admin/productos/${producto.id}/editar`}
-                      className="text-gray-600 dark:text-sand-300 hover:text-gray-900 dark:hover:text-sand-50 mr-4 font-semibold transition-colors"
+                      className="text-on-surface-variant dark:text-on-primary-fixed-variant hover:text-on-surface dark:hover:text-on-primary mr-4 font-semibold transition-colors"
                     >
                       Editar
                     </Link>

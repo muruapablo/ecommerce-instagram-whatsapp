@@ -68,15 +68,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
     const producto = await getProductoBySlug(params.slug)
 
     return (
-      <div className="min-h-screen bg-sand-50 dark:bg-charcoal-900 transition-colors duration-300">
+      <div className="min-h-screen bg-surface dark:bg-primary transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           {/* Breadcrumb */}
-          <nav className="mb-8 animate-fadeIn">
+          <nav className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-charcoal-600 dark:text-sand-400 hover:text-charcoal-900 dark:hover:text-sand-50 transition-colors font-medium group"
+              className="inline-flex items-center gap-2 text-on-surface-variant dark:text-on-primary-fixed-variant hover:text-on-surface dark:hover:text-on-primary transition-colors font-body font-medium group"
             >
-              <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Volver a productos
@@ -86,50 +86,55 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {/* Product Detail */}
           <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
             {/* Image */}
-            <div className="relative animate-fadeIn">
-              <div className="relative aspect-square bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-2xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(26,26,26,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,107,107,0.3)] transition-all duration-300">
+            <div className="relative">
+              {/* MonoBoutique: No borders — tonal surface container */}
+              <div className="relative aspect-square bg-surface-container-lowest dark:bg-primary-container overflow-hidden shadow-ambient-lg">
                 <Image
                   src={producto.imagen || '/placeholder.jpg'}
                   alt={producto.nombre}
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover hover:scale-105 transition-transform duration-700"
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+                {/* Subtle top fade overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary/5 pointer-events-none" />
               </div>
-              
-              {/* Decorative gradient corner accent */}
-              <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-[#D74B4B]/30 via-[#8B3A3A]/20 to-transparent dark:from-[#8B3A3A]/30 dark:via-[#6B2E2E]/20 rounded-full blur-3xl animate-pulse"></div>
+              {/* Ambient green glow */}
+              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-secondary/8 dark:bg-secondary/15 rounded-full blur-3xl pointer-events-none"></div>
             </div>
 
             {/* Info */}
-            <div className="flex flex-col animate-fadeIn delay-100">
-              {/* Product Name with gradient effect */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-charcoal-900 dark:text-sand-50 mb-6 leading-tight tracking-tight transition-colors">
+            <div className="flex flex-col">
+              {/* Product Name */}
+              <h1 className="font-headline font-black text-4xl md:text-5xl lg:text-6xl text-on-surface dark:text-on-primary mb-6 leading-tight tracking-tighter-print transition-colors duration-300">
                 {producto.nombre}
               </h1>
 
-              {/* Price - Large Serif Display with gradient */}
+              {/* Price */}
               <div className="mb-8">
-                <p className="text-sm font-bold text-charcoal-500 dark:text-sand-400 uppercase tracking-wider mb-2 transition-colors">Precio</p>
-                <div className="font-serif text-6xl md:text-7xl font-bold gradient-text tracking-tight">
-                  {store.currencySymbol}{producto.precio.toLocaleString('es-AR')}
+                <p className="font-body text-xs font-semibold text-on-surface-variant dark:text-on-primary-fixed-variant uppercase tracking-widest mb-2 transition-colors">Precio</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="font-body text-xl text-on-surface-variant dark:text-on-primary-fixed-variant transition-colors">{store.currencySymbol}</span>
+                  <span className="font-headline font-black text-6xl md:text-7xl text-on-surface dark:text-on-primary tracking-tighter-print leading-none transition-colors">
+                    {producto.precio.toLocaleString('es-AR')}
+                  </span>
                 </div>
               </div>
 
-              {/* Stock Info with gradients */}
+              {/* Stock — MonoBoutique tonal badges */}
               <div className="mb-8">
                 {producto.stock > 0 ? (
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 border-2 border-emerald-600 dark:border-emerald-500 rounded-lg transition-colors">
-                    <div className="w-2 h-2 bg-emerald-600 dark:bg-emerald-400 rounded-full animate-pulse"></div>
-                    <p className="text-emerald-800 dark:text-emerald-300 font-bold transition-colors">
-                      Disponible ahora ({producto.stock} unidades)
+                  <div className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-secondary/10 dark:bg-secondary/15 rounded-md transition-colors">
+                    <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+                    <p className="text-secondary font-headline font-semibold text-sm">
+                      {producto.stock <= 5 ? `Solo ${producto.stock} disponibles` : 'En stock'}
                     </p>
                   </div>
                 ) : (
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-clay-100 dark:bg-[#8B3A3A]/20 border-2 border-clay-600 dark:border-[#8B3A3A] rounded-lg transition-colors">
-                    <div className="w-2 h-2 bg-clay-600 dark:bg-[#8B3A3A] rounded-full"></div>
-                    <p className="text-clay-900 dark:text-[#D97676] font-bold transition-colors">Sin stock</p>
+                  <div className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-surface-container-high dark:bg-primary-container rounded-md transition-colors">
+                    <div className="w-2 h-2 bg-on-surface-variant dark:bg-on-primary-fixed-variant rounded-full"></div>
+                    <p className="text-on-surface-variant dark:text-on-primary-fixed-variant font-headline font-semibold text-sm transition-colors">Sin stock</p>
                   </div>
                 )}
               </div>
@@ -137,11 +142,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {/* Description */}
               {producto.descripcion && (
                 <div className="mb-10">
-                  <h2 className="text-2xl font-black text-charcoal-900 dark:text-sand-50 mb-4 uppercase tracking-wide transition-colors">
+                  {/* Tonal divider — no solid line */}
+                  <div className="h-px w-full bg-surface-variant dark:bg-primary-container mb-6 transition-colors"></div>
+                  <h2 className="font-headline font-bold text-xs uppercase tracking-widest text-on-surface-variant dark:text-on-primary-fixed-variant mb-4 transition-colors">
                     Descripción
                   </h2>
-                  <div className="h-1 w-16 bg-gradient-to-r from-[#D74B4B] via-[#8B3A3A] to-[#3D2424] dark:from-[#8B3A3A] dark:via-[#6B2E2E] dark:to-[#3D2424] rounded-full mb-4"></div>
-                  <p className="text-charcoal-700 dark:text-sand-300 whitespace-pre-line leading-relaxed text-lg transition-colors">
+                  <p className="font-body text-on-surface dark:text-on-primary/80 whitespace-pre-line leading-relaxed text-base transition-colors">
                     {producto.descripcion}
                   </p>
                 </div>

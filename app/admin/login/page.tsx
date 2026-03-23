@@ -40,9 +40,9 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-charcoal-900 px-4 transition-colors duration-300">
-      <div className="max-w-md w-full bg-white dark:bg-charcoal-800 rounded-lg shadow-md border-2 border-gray-200 dark:border-sand-200/20 p-8 transition-colors duration-300">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-sand-50 mb-6 text-center transition-colors">
+    <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-primary px-4 transition-colors duration-300">
+      <div className="max-w-md w-full bg-surface-container-lowest dark:bg-primary-container rounded-lg shadow-md p-8 transition-colors duration-300">
+        <h1 className="text-2xl font-bold text-on-surface dark:text-on-primary mb-6 text-center transition-colors">
           Panel de Administración
         </h1>
 
@@ -50,7 +50,7 @@ export default function AdminLoginPage() {
           <div>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-1 transition-colors"
+              className="block text-sm font-medium text-on-surface dark:text-on-primary mb-1 transition-colors"
             >
               Usuario
             </label>
@@ -60,7 +60,7 @@ export default function AdminLoginPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+              className="w-full px-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
               placeholder="admin"
             />
           </div>
@@ -68,7 +68,7 @@ export default function AdminLoginPage() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-1 transition-colors"
+              className="block text-sm font-medium text-on-surface dark:text-on-primary mb-1 transition-colors"
             >
               Contraseña
             </label>
@@ -78,7 +78,7 @@ export default function AdminLoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+              className="w-full px-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
               placeholder="••••••••"
             />
           </div>
@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] dark:to-[#6B2E2E] text-white py-3 rounded-lg font-semibold hover:from-[#8B3A3A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all border-2 border-charcoal-900 dark:border-sand-200/30"
+            className="w-full bg-gradient-primary text-on-primary py-3 rounded-lg font-semibold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
           </button>

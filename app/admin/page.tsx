@@ -3,16 +3,16 @@ import Link from 'next/link'
 export default function AdminPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-sand-50 mb-8">
+      <h1 className="text-3xl font-bold text-on-surface dark:text-on-primary mb-8">
         Panel de Administración
       </h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Link
           href="/admin/productos"
-          className="bg-white dark:bg-charcoal-800 p-6 rounded-lg shadow-sm hover:shadow-md transition-all border-2 border-transparent hover:border-charcoal-900 dark:hover:border-sand-200/30"
+          className="bg-surface-container-lowest dark:bg-primary-container p-6 rounded-lg shadow-sm hover:shadow-md transition-all hover:bg-surface-container-low dark:hover:bg-primary"
         >
-          <div className="text-[#D74B4B] dark:text-[#D97676] mb-4">
+          <div className="text-secondary mb-4">
             <svg
               className="w-12 h-12"
               fill="none"
@@ -27,10 +27,10 @@ export default function AdminPage() {
               />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-sand-50 mb-2">
+          <h2 className="text-xl font-semibold text-on-surface dark:text-on-primary mb-2">
             Productos
           </h2>
-          <p className="text-gray-600 dark:text-sand-400">
+          <p className="text-on-surface-variant dark:text-on-primary-fixed-variant">
             Gestionar productos de la tienda
           </p>
         </Link>
@@ -38,9 +38,9 @@ export default function AdminPage() {
         <Link
           href="/"
           target="_blank"
-          className="bg-white dark:bg-charcoal-800 p-6 rounded-lg shadow-sm hover:shadow-md transition-all border-2 border-transparent hover:border-charcoal-900 dark:hover:border-sand-200/30"
+          className="bg-surface-container-lowest dark:bg-primary-container p-6 rounded-lg shadow-sm hover:shadow-md transition-all hover:bg-surface-container-low dark:hover:bg-primary"
         >
-          <div className="text-[#5A5A5A] dark:text-[#8B3A3A] mb-4">
+          <div className="text-on-surface-variant dark:text-on-primary-fixed-variant mb-4">
             <svg
               className="w-12 h-12"
               fill="none"
@@ -61,10 +61,10 @@ export default function AdminPage() {
               />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-sand-50 mb-2">
+          <h2 className="text-xl font-semibold text-on-surface dark:text-on-primary mb-2">
             Ver tienda
           </h2>
-          <p className="text-gray-600 dark:text-sand-400">
+          <p className="text-on-surface-variant dark:text-on-primary-fixed-variant">
             Abrir la tienda en una nueva pestaña
           </p>
         </Link>
