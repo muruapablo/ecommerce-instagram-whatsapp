@@ -1,0 +1,178 @@
+You are a senior full stack engineer.
+
+Use the attached markdown file "ECOMMERCE_TEMPLATE_INSTAGRAM.md" as the PRODUCT SPECIFICATION for the project.
+
+Your task is to generate a complete working project based on that document.
+
+TECH STACK
+
+Frontend:
+Next.js 14
+App Router
+TypeScript
+TailwindCSS
+
+Backend:
+Next.js API Routes
+
+Database:
+Supabase
+
+Payments:
+Mercado Pago Checkout
+
+Hosting target:
+Vercel
+
+GOAL
+
+Generate a minimal but production-ready ecommerce optimized for Instagram and WhatsApp sales.
+
+The system must allow a store owner to manage products through an admin panel and customers to buy through Mercado Pago.
+
+IMPORTANT REQUIREMENTS
+
+1. The project must be structured following modern Next.js best practices.
+
+2. Generate all folders and files.
+
+3. The admin panel must include a full CRUD (ABM) for products.
+
+4. Use Supabase as the database provider.
+
+5. Implement a checkout endpoint that creates a Mercado Pago preference.
+
+6. Implement a webhook endpoint to receive payment confirmation.
+
+7. Create reusable components.
+
+8. The project must be easily clonable as a template for multiple stores.
+
+PROJECT STRUCTURE
+
+Generate this structure:
+
+/app
+  page.tsx
+  /producto/[slug]/page.tsx
+  /admin/page.tsx
+  /admin/productos/page.tsx
+  /admin/productos/nuevo/page.tsx
+  /admin/productos/[id]/editar/page.tsx
+
+/api
+  /checkout/route.ts
+  /webhook/route.ts
+
+/components
+  ProductCard.tsx
+  ProductGrid.tsx
+  CheckoutButton.tsx
+  WhatsAppButton.tsx
+  Navbar.tsx
+
+/lib
+  supabase.ts
+  mercadopago.ts
+
+/config
+  store.ts
+
+STYLING
+
+Use TailwindCSS.
+
+The UI must be simple, clean, and optimized for mobile.
+
+DATABASE
+
+Create SQL schema for Supabase:
+
+Table productos
+
+id uuid
+nombre text
+slug text
+precio numeric
+descripcion text
+imagen text
+stock integer
+activo boolean
+created_at timestamp
+
+Table pedidos
+
+id uuid
+producto_id uuid
+cantidad integer
+precio_total numeric
+estado text
+created_at timestamp
+
+ADMIN PANEL
+
+Create a simple admin UI that allows:
+
+View products
+Create product
+Edit product
+Delete product
+
+PRODUCT PAGE
+
+Each product page must show:
+
+Image
+Name
+Description
+Price
+
+Buttons:
+
+Comprar con Mercado Pago
+Consultar por WhatsApp
+
+WHATSAPP BUTTON
+
+Generate link:
+
+https://wa.me/{phone}?text=Hola quiero consultar por {producto}
+
+CONFIGURATION FILE
+
+Create config/store.ts
+
+Example:
+
+export const store = {
+  name: "Mi Tienda",
+  whatsapp: "5493510000000",
+  instagram: "mitienda",
+  logo: "/logo.png",
+  primaryColor: "#000000"
+}
+
+DEPLOYMENT
+
+Prepare the project for deployment on Vercel.
+
+Use environment variables for:
+
+SUPABASE_URL
+SUPABASE_ANON_KEY
+MERCADOPAGO_ACCESS_TOKEN
+
+OUTPUT
+
+Generate:
+
+1 Complete project structure
+2 All code files
+3 Supabase SQL schema
+4 Setup instructions
+5 Environment variables example
+
+The code should be ready to run after:
+
+npm install
+npm run dev
