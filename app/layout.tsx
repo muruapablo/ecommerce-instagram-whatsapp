@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Merriweather } from 'next/font/google'
+import { Inter, Manrope } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import { ToastProvider } from '@/components/Toast'
@@ -13,10 +13,10 @@ const inter = Inter({
   display: 'swap',
 })
 
-const merriweather = Merriweather({ 
-  weight: ['300', '400', '700', '900'],
+const manrope = Manrope({ 
+  weight: ['400', '600', '700', '800'],
   subsets: ['latin'],
-  variable: '--font-merriweather',
+  variable: '--font-manrope',
   display: 'swap',
 })
 
@@ -66,18 +66,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${merriweather.variable}`} suppressHydrationWarning>
-      <body className="bg-sand-50 dark:bg-[#1A1625] min-h-screen font-sans antialiased transition-colors duration-300">
+    <html lang="es" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <body className="bg-surface dark:bg-primary font-body antialiased transition-colors duration-300">
         <ThemeProvider>
           <CartProvider>
             <ToastProvider>
-            <div className="grain-overlay" />
             
-            {/* Animated gradient orbs (background decoration) */}
+            {/* MonoBoutique: Subtle floating layers for depth */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#D74B4B]/20 to-[#8B3A3A]/10 opacity-30 dark:opacity-15 rounded-full blur-3xl animate-float" />
-              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[#6B2E2E]/20 to-[#3D2424]/10 opacity-30 dark:opacity-15 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}} />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#8B3A3A]/15 to-[#3D2424]/5 opacity-20 dark:opacity-10 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}} />
+              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-surface-variant/30 dark:bg-primary-fixed/10 rounded-full blur-3xl animate-float" />
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-surface-container-low/50 dark:bg-primary-container/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}} />
             </div>
             
               <Navbar />

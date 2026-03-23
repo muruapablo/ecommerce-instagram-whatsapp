@@ -11,7 +11,7 @@ import CartButton from './CartButton'
 const ThemeToggle = dynamic(() => import('./ThemeToggle'), {
   ssr: false,
   loading: () => (
-    <div className="w-12 h-12 bg-sand-200/50 dark:bg-charcoal-800/50 rounded-xl border-2 border-charcoal-900 dark:border-sand-200/20 animate-pulse" />
+    <div className="w-10 h-10 bg-surface-container rounded-md animate-pulse" />
   ),
 })
 
@@ -34,38 +34,53 @@ export default function Navbar() {
       {/* Skip to content link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[100] bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] text-white px-4 py-2 rounded-lg font-bold focus:outline-none focus:ring-4 focus:ring-[#D74B4B]"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[100] bg-gradient-primary text-on-primary px-4 py-2 rounded-md font-headline font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
         Saltar al contenido
       </a>
 
-      <nav className="bg-sand-50/80 dark:bg-charcoal-900/80 backdrop-blur-md border-b-2 border-charcoal-900 dark:border-sand-200/20 sticky top-0 z-50 shadow-sm transition-colors duration-300">
+      {/* MonoBoutique: Borderless navigation with tonal layering */}
+      <nav className="bg-surface-container-lowest/80 dark:bg-primary/90 backdrop-blur-boutique sticky top-0 z-50 shadow-ambient transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20 gap-3">
-            {/* Logo / Store Name with gradient */}
-            <Link href="/" className="group flex items-center gap-3 min-w-0">
-              <div className="relative min-w-0">
-                {/* Animated gradient accent behind text */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-[#D74B4B]/20 to-[#8B3A3A]/20 opacity-20 dark:opacity-30 rounded-lg transform -rotate-1 group-hover:rotate-1 transition-all duration-300 blur-md"></div>
-                <span className="relative block truncate max-w-[44vw] sm:max-w-none text-xl sm:text-3xl md:text-4xl font-black text-charcoal-900 dark:text-sand-50 tracking-tight transition-colors">
-                  {store.name}
-                </span>
+          <div className="flex justify-between items-center py-5 gap-4">
+            
+            {/* Logo / Store Name - Market Style */}
+            <Link href="/" className="group flex items-center gap-2 min-w-0">
+              {/* Market-style logo container */}
+              <div className="relative">
+                {/* Subtle gradient accent (no borders) */}
+                <div className="absolute -inset-4 bg-surface-variant/10 dark:bg-primary-fixed/5 opacity-0 group-hover:opacity-100 rounded-md transition-all duration-500 blur-sm" />
+                
+                {/* Store name with editorial typography */}
+                <div className="relative flex flex-col">
+                  <span className="font-headline font-extrabold text-2xl sm:text-3xl lg:text-4xl text-on-surface dark:text-on-primary tracking-tighter-print leading-none transition-colors">
+                    {store.name.split(' ')[0]}
+                  </span>
+                  {store.name.split(' ')[1] && (
+                    <span className="font-headline font-semibold text-base sm:text-lg lg:text-xl text-on-surface-variant dark:text-on-primary-fixed-variant tracking-wide leading-none mt-0.5 transition-colors">
+                      {store.name.split(' ').slice(1).join(' ')}
+                    </span>
+                  )}
+                  {/* Subtle underline accent */}
+                  <div className="h-[2px] w-0 group-hover:w-full bg-gradient-primary transition-all duration-500 mt-1" />
+                </div>
               </div>
             </Link>
 
             {/* Actions */}
-            <div className="flex items-center gap-2 sm:gap-4">
-              {/* Main action buttons (Search, Instagram, WhatsApp) */}
-              <div className="flex items-center gap-1.5 sm:gap-3">
-                {/* Search Button */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Main action buttons */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                
+                {/* Search Button - MonoBoutique: no borders, tonal layers */}
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="group relative p-2.5 sm:p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#D74B4B] hover:to-[#8B3A3A] dark:hover:from-[#8B3A3A] dark:hover:to-[#6B2E2E] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
+                  className="group relative p-2.5 sm:p-3 bg-surface-container dark:bg-primary-container rounded-md hover:bg-surface-container-high dark:hover:bg-primary-fixed transition-all duration-300 shadow-ambient"
                   aria-label="Buscar productos"
                   aria-expanded={searchOpen}
                 >
                   <svg
-                    className="w-5 h-5 text-charcoal-900 dark:text-sand-200 group-hover:text-white transition-colors"
+                    className="w-5 h-5 text-on-surface dark:text-on-primary transition-colors"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -85,11 +100,11 @@ export default function Navbar() {
                     href={`https://instagram.com/${store.instagram}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative p-2.5 sm:p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#8B3A3A] hover:to-[#6B2E2E] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
+                    className="group relative p-2.5 sm:p-3 bg-surface-container dark:bg-primary-container rounded-md hover:bg-surface-container-high dark:hover:bg-primary-fixed transition-all duration-300 shadow-ambient"
                     aria-label="Instagram"
                   >
                     <svg
-                      className="w-5 h-5 text-charcoal-900 dark:text-sand-200 group-hover:text-white transition-colors"
+                      className="w-5 h-5 text-on-surface dark:text-on-primary transition-colors"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -99,17 +114,17 @@ export default function Navbar() {
                   </a>
                 )}
 
-                {/* WhatsApp */}
+                {/* WhatsApp - MonoBoutique: Tonal layer with green icon */}
                 {store.whatsapp && (
                   <a
                     href={`https://wa.me/${store.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative p-2.5 sm:p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#5A5A5A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
+                    className="group relative p-2.5 sm:p-3 bg-surface-container dark:bg-primary-container rounded-md hover:bg-surface-container-high dark:hover:bg-primary-fixed transition-all duration-300 shadow-ambient"
                     aria-label="WhatsApp"
                   >
                     <svg
-                      className="w-5 h-5 text-charcoal-900 dark:text-sand-200 group-hover:text-white transition-colors"
+                      className="w-5 h-5 text-secondary transition-colors"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -123,31 +138,31 @@ export default function Navbar() {
                 <CartButton />
               </div>
 
-              {/* Divider */}
-              <div className="hidden sm:block w-px h-8 bg-charcoal-900/20 dark:bg-sand-200/20"></div>
+              {/* Subtle divider (background shift, not solid line) */}
+              <div className="hidden sm:block w-px h-8 bg-surface-variant/30 dark:bg-primary-fixed/20" />
 
-              {/* Theme Toggle - Secondary action (smaller, less prominent) */}
-              <div className="scale-75 sm:scale-90 opacity-80 hover:opacity-100 transition-opacity">
+              {/* Theme Toggle */}
+              <div className="scale-90 opacity-90 hover:opacity-100 transition-opacity">
                 <ThemeToggle />
               </div>
             </div>
           </div>
 
-          {/* Search Bar (Expandable) */}
+          {/* Search Bar (Expandable) - MonoBoutique: Ghost border */}
           {searchOpen && (
-            <div className="pb-4 animate-fadeIn">
+            <div className="pb-5 animate-fade-in">
               <form onSubmit={handleSearch} className="relative max-w-md">
                 <input
                   type="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Buscar productos..."
-                  className="w-full px-4 py-3 pl-12 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg font-medium text-charcoal-900 dark:text-sand-50 placeholder:text-charcoal-400 dark:placeholder:text-sand-400 focus:outline-none focus:ring-4 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] transition-colors"
+                  className="w-full px-4 py-3 pl-12 bg-surface-container-highest dark:bg-primary-container rounded-md font-body text-on-surface dark:text-on-primary placeholder:text-on-surface-variant dark:placeholder:text-on-primary-fixed-variant focus:outline-none focus:ring-2 focus:ring-primary/20 dark:focus:ring-outline-variant/50 border border-outline-variant/20 dark:border-outline-variant/10 transition-all"
                   autoFocus
                   aria-label="Campo de búsqueda"
                 />
                 <svg
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-charcoal-500 dark:text-sand-400"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-on-surface-variant dark:text-on-primary-fixed-variant"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

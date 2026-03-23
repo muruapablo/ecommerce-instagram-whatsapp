@@ -47,13 +47,12 @@ export default function CheckoutButton({ producto }: CheckoutButtonProps) {
       onClick={handleCheckout}
       disabled={isDisabled}
       className={`
-        w-full py-5 px-8 rounded-lg font-bold text-white text-lg
-        border-2 border-charcoal-900 dark:border-sand-200/30
+        w-full py-5 px-8 rounded-lg font-bold text-lg
         transition-all duration-200
         ${
           isDisabled
-            ? 'bg-charcoal-300 dark:bg-charcoal-700 cursor-not-allowed shadow-none'
-            : 'bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] dark:to-[#6B2E2E] hover:from-[#8B3A3A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] dark:shadow-[6px_6px_0px_0px_rgba(139,58,58,0.5)] hover:shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[3px_3px_0px_0px_rgba(139,58,58,0.7)] hover:translate-x-[3px] hover:translate-y-[3px]'
+            ? 'bg-surface-container dark:bg-primary-container text-on-surface-variant dark:text-on-primary-fixed-variant cursor-not-allowed'
+            : 'bg-gradient-primary text-on-primary hover:opacity-90'
         }
       `}
     >

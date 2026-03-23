@@ -42,10 +42,10 @@ export default function Modal({
   if (!isOpen) return null
 
   const iconColors = {
-    info: 'from-sand-500 to-sand-600',
-    warning: 'from-clay-500 to-clay-600',
-    error: 'from-clay-600 to-clay-700',
-    success: 'from-[#5A5A5A] to-[#3D2424]',
+    info: 'from-secondary/30 to-secondary/50',
+    warning: 'from-error/20 to-error/40',
+    error: 'from-error/30 to-error/60',
+    success: 'from-secondary/30 to-secondary/60',
   }
 
   const icons = {
@@ -80,31 +80,31 @@ export default function Modal({
       aria-labelledby="modal-title"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-charcoal-900/60 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm" />
 
       {/* Modal */}
       <div
-        className="relative bg-white border-2 border-charcoal-900 rounded-2xl shadow-[12px_12px_0px_0px_rgba(26,26,26,1)] max-w-md w-full p-8 animate-scaleIn"
+        className="relative bg-surface-container-lowest dark:bg-primary-container rounded-2xl shadow-sm max-w-md w-full p-8 animate-scaleIn"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Icon */}
-        <div className={`w-16 h-16 bg-gradient-to-br ${iconColors[type]} rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-charcoal-900 shadow-lg`}>
+        <div className={`w-16 h-16 bg-gradient-to-br ${iconColors[type]} rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg`}>
           {icons[type]}
         </div>
 
         {/* Title */}
         <h2
           id="modal-title"
-          className="text-2xl md:text-3xl font-black text-charcoal-900 mb-4 text-center tracking-tight"
+          className="text-2xl md:text-3xl font-black text-on-surface dark:text-on-primary mb-4 text-center tracking-tight"
         >
           {title}
         </h2>
 
         {/* Divider */}
-        <div className="h-1 w-16 bg-clay-600 rounded-full mx-auto mb-6" />
+        <div className="h-1 w-16 bg-on-surface/20 dark:bg-on-primary/20 rounded-full mx-auto mb-6" />
 
         {/* Message */}
-        <p className="text-charcoal-700 text-center mb-8 leading-relaxed font-medium">
+        <p className="text-on-surface-variant dark:text-on-primary-fixed-variant text-center mb-8 leading-relaxed font-medium">
           {message}
         </p>
 
@@ -112,7 +112,7 @@ export default function Modal({
         <div className="flex gap-3">
           <button
             onClick={onClose}
-            className="flex-1 px-6 py-3 bg-white text-charcoal-900 border-2 border-charcoal-900 rounded-lg font-bold hover:bg-sand-100 transition-colors"
+            className="flex-1 px-6 py-3 bg-surface-container dark:bg-primary text-on-surface dark:text-on-primary rounded-lg font-bold hover:bg-surface-container-high dark:hover:bg-primary-container transition-colors"
           >
             {cancelText}
           </button>
@@ -123,7 +123,7 @@ export default function Modal({
                 onConfirm()
                 onClose()
               }}
-              className="flex-1 px-6 py-3 bg-clay-600 text-white border-2 border-charcoal-900 rounded-lg font-bold shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+              className="flex-1 px-6 py-3 bg-gradient-primary text-on-primary rounded-lg font-bold hover:opacity-90 transition-all"
             >
               {confirmText}
             </button>

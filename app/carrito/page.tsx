@@ -49,16 +49,16 @@ export default function CarritoPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-sand-50 dark:bg-charcoal-900 transition-colors duration-300 py-12">
+      <div className="min-h-screen bg-surface dark:bg-primary transition-colors duration-300 py-12">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-3xl sm:text-4xl font-bold text-charcoal-900 dark:text-sand-50 mb-8 text-balance">
+          <h1 className="text-3xl sm:text-4xl font-bold text-on-surface dark:text-on-primary mb-8 text-balance">
             🛒 Carrito de Compras
           </h1>
           
-          <div className="bg-white dark:bg-charcoal-800 rounded-2xl border-2 border-charcoal-900 dark:border-sand-200/30 p-8 sm:p-12 text-center">
+          <div className="bg-surface-container-lowest dark:bg-primary-container rounded-2xl p-8 sm:p-12 text-center">
             <div className="mb-6">
               <svg
-                className="w-32 h-32 mx-auto text-charcoal-300 dark:text-charcoal-600"
+                className="w-32 h-32 mx-auto text-on-surface/25 dark:text-on-primary/20"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -71,15 +71,15 @@ export default function CarritoPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-charcoal-900 dark:text-sand-50 mb-4">
+            <h2 className="text-2xl font-bold text-on-surface dark:text-on-primary mb-4">
               Tu carrito está vacío
             </h2>
-            <p className="text-charcoal-600 dark:text-sand-400 mb-6">
+            <p className="text-on-surface-variant dark:text-on-primary-fixed-variant mb-6">
               Agrega productos para comenzar a comprar
             </p>
             <Link
               href="/"
-              className="inline-block bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] dark:to-[#6B2E2E] text-white font-bold px-8 py-4 rounded-lg hover:from-[#8B3A3A] hover:to-[#3D2424] transition-all duration-200 border-2 border-charcoal-900 dark:border-sand-200/30 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(139,58,58,0.5)]"
+              className="inline-block bg-gradient-primary text-on-primary font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-all duration-200"
             >
               Ver Productos
             </Link>
@@ -90,11 +90,11 @@ export default function CarritoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-sand-50 dark:bg-charcoal-900 transition-colors duration-300 py-12">
+    <div className="min-h-screen bg-surface dark:bg-primary transition-colors duration-300 py-12">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-charcoal-900 dark:text-sand-50 text-balance">
+          <h1 className="text-3xl sm:text-4xl font-bold text-on-surface dark:text-on-primary text-balance">
             🛒 Carrito ({totalItems} {totalItems === 1 ? 'item' : 'items'})
           </h1>
           <button
@@ -111,10 +111,10 @@ export default function CarritoPage() {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white dark:bg-charcoal-800 rounded-xl border-2 border-charcoal-900 dark:border-sand-200/30 p-4 flex flex-col sm:flex-row gap-4 transition-all duration-200"
+                className="bg-surface-container-lowest dark:bg-primary-container rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all duration-200"
               >
                 {/* Product Image */}
-                <div className="relative w-24 h-24 flex-shrink-0 bg-sand-100 dark:bg-charcoal-700 rounded-lg overflow-hidden border-2 border-charcoal-900 dark:border-sand-200/30">
+                <div className="relative w-24 h-24 flex-shrink-0 bg-surface-container dark:bg-primary rounded-lg overflow-hidden">
                   {item.imagen && (
                     <Image
                       src={item.imagen}
@@ -130,11 +130,11 @@ export default function CarritoPage() {
                 <div className="flex-1 min-w-0">
                   <Link
                     href={`/producto/${item.slug}`}
-                    className="font-bold text-lg text-charcoal-900 dark:text-sand-50 hover:text-[#D74B4B] dark:hover:text-[#D74B4B] transition-colors line-clamp-2 break-words"
+                    className="font-bold text-lg text-on-surface dark:text-on-primary hover:text-secondary transition-colors line-clamp-2 break-words"
                   >
                     {item.nombre}
                   </Link>
-                  <p className="text-charcoal-600 dark:text-sand-400 text-sm mb-2">
+                  <p className="text-on-surface-variant dark:text-on-primary-fixed-variant text-sm mb-2">
                     {store.currencySymbol}{item.precio.toLocaleString('es-AR')} c/u
                   </p>
 
@@ -142,22 +142,22 @@ export default function CarritoPage() {
                   <div className="flex flex-wrap items-center gap-2">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="w-8 h-8 rounded border-2 border-charcoal-900 dark:border-sand-200/30 bg-sand-100 dark:bg-charcoal-700 hover:bg-sand-200 dark:hover:bg-charcoal-600 font-bold transition-colors"
+                      className="w-8 h-8 rounded bg-surface-container dark:bg-primary hover:bg-surface-container-high dark:hover:bg-primary-container font-bold transition-colors"
                       disabled={item.quantity <= 1}
                     >
                       −
                     </button>
-                    <span className="w-12 text-center font-bold text-charcoal-900 dark:text-sand-50">
+                    <span className="w-12 text-center font-bold text-on-surface dark:text-on-primary">
                       {item.quantity}
                     </span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="w-8 h-8 rounded border-2 border-charcoal-900 dark:border-sand-200/30 bg-sand-100 dark:bg-charcoal-700 hover:bg-sand-200 dark:hover:bg-charcoal-600 font-bold transition-colors"
+                      className="w-8 h-8 rounded bg-surface-container dark:bg-primary hover:bg-surface-container-high dark:hover:bg-primary-container font-bold transition-colors"
                       disabled={item.quantity >= item.stock}
                     >
                       +
                     </button>
-                    <span className="text-xs text-charcoal-500 dark:text-sand-500 ml-2">
+                    <span className="text-xs text-on-surface-variant dark:text-on-primary-fixed-variant ml-2">
                       (máx: {item.stock})
                     </span>
                   </div>
@@ -165,7 +165,7 @@ export default function CarritoPage() {
 
                 {/* Subtotal and Remove */}
                 <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between gap-3 sm:gap-0">
-                  <p className="font-bold text-lg sm:text-xl text-charcoal-900 dark:text-sand-50">
+                  <p className="font-bold text-lg sm:text-xl text-on-surface dark:text-on-primary">
                     {store.currencySymbol}{(item.precio * item.quantity).toLocaleString('es-AR')}
                   </p>
                   <button
@@ -181,23 +181,23 @@ export default function CarritoPage() {
 
           {/* Summary */}
           <div className="md:col-span-1">
-            <div className="bg-white dark:bg-charcoal-800 rounded-xl border-2 border-charcoal-900 dark:border-sand-200/30 p-6 md:sticky md:top-24">
-              <h2 className="text-2xl font-bold text-charcoal-900 dark:text-sand-50 mb-4">
+            <div className="bg-surface-container-lowest dark:bg-primary-container rounded-xl p-6 md:sticky md:top-24">
+              <h2 className="text-2xl font-bold text-on-surface dark:text-on-primary mb-4">
                 Resumen
               </h2>
               
-              <div className="space-y-3 mb-6 pb-6 border-b-2 border-charcoal-900/10 dark:border-sand-200/20">
-                <div className="flex justify-between text-charcoal-700 dark:text-sand-300">
+              <div className="space-y-3 mb-6 pb-6 border-b border-on-surface/10 dark:border-on-primary/10">
+                <div className="flex justify-between text-on-surface dark:text-on-primary">
                   <span>Subtotal</span>
                   <span>{store.currencySymbol}{totalPrice.toLocaleString('es-AR')}</span>
                 </div>
-                <div className="flex justify-between text-charcoal-700 dark:text-sand-300">
+                <div className="flex justify-between text-on-surface dark:text-on-primary">
                   <span>Envío</span>
                   <span className="text-sm">A calcular</span>
                 </div>
               </div>
 
-              <div className="flex justify-between text-2xl font-bold text-charcoal-900 dark:text-sand-50 mb-6">
+              <div className="flex justify-between text-2xl font-bold text-on-surface dark:text-on-primary mb-6">
                 <span>Total</span>
                 <span>{store.currencySymbol}{totalPrice.toLocaleString('es-AR')}</span>
               </div>
@@ -205,7 +205,7 @@ export default function CarritoPage() {
               <button
                 onClick={handleCheckout}
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] dark:to-[#6B2E2E] text-white font-bold px-8 py-4 rounded-lg hover:from-[#8B3A3A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] transition-all duration-200 border-2 border-charcoal-900 dark:border-sand-200/30 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(139,58,58,0.5)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] hover:translate-x-[2px] hover:translate-y-[2px] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-primary text-on-primary font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -232,7 +232,7 @@ export default function CarritoPage() {
                 )}
               </button>
 
-              <p className="text-xs text-charcoal-500 dark:text-sand-500 text-center mt-4">
+              <p className="text-xs text-on-surface-variant dark:text-on-primary-fixed-variant text-center mt-4">
                 Serás redirigido a Mercado Pago para completar el pago de forma segura
               </p>
             </div>

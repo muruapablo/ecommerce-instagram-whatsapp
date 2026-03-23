@@ -66,10 +66,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   }
 
   const colorsByType = {
-    success: 'bg-[#5A5A5A] text-white',
-    error: 'bg-clay-600 text-white',
-    warning: 'bg-sand-600 text-white',
-    info: 'bg-charcoal-900 text-white',
+    success: 'bg-secondary text-on-secondary',
+    error: 'bg-error text-on-error',
+    warning: 'bg-surface-container-high dark:bg-primary text-on-surface dark:text-on-primary',
+    info: 'bg-primary text-on-primary',
   }
 
   return (
@@ -84,8 +84,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             className={`
               ${colorsByType[toast.type]}
               px-6 py-4 rounded-lg font-bold
-              border-2 border-charcoal-900
-              shadow-[4px_4px_0px_0px_rgba(26,26,26,1)]
+              shadow-sm
               animate-slideInRight pointer-events-auto
               flex items-center gap-3 min-w-[300px] max-w-md
             `}

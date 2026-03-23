@@ -259,13 +259,13 @@ export default function ProductForm({ producto }: ProductFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white dark:bg-charcoal-800 rounded-lg shadow-sm p-6 border-2 border-gray-200 dark:border-sand-200/20">
+    <form onSubmit={handleSubmit} className="bg-surface-container-lowest dark:bg-primary-container rounded-lg shadow-sm p-6">
       <div className="grid md:grid-cols-2 gap-6">
         {/* Nombre */}
         <div className="md:col-span-2">
           <label
             htmlFor="nombre"
-            className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-2"
+            className="block text-sm font-medium text-on-surface dark:text-on-primary mb-2"
           >
             Nombre del producto *
           </label>
@@ -276,7 +276,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
             required
             value={formData.nombre}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+            className="w-full px-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
             placeholder="Ej: Remera básica negra"
           />
         </div>
@@ -285,7 +285,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
         <div className="md:col-span-2">
           <label
             htmlFor="slug"
-            className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-2"
+            className="block text-sm font-medium text-on-surface dark:text-on-primary mb-2"
           >
             Slug (URL amigable) *
           </label>
@@ -296,10 +296,10 @@ export default function ProductForm({ producto }: ProductFormProps) {
             required
             value={formData.slug}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+            className="w-full px-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
             placeholder="remera-basica-negra"
           />
-          <p className="mt-1 text-sm text-gray-500 dark:text-sand-400">
+          <p className="mt-1 text-sm text-on-surface-variant dark:text-on-primary-fixed-variant">
             URL: /producto/{formData.slug || 'slug'}
           </p>
         </div>
@@ -308,12 +308,12 @@ export default function ProductForm({ producto }: ProductFormProps) {
         <div>
           <label
             htmlFor="precio"
-            className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-2"
+            className="block text-sm font-medium text-on-surface dark:text-on-primary mb-2"
           >
             Precio *
           </label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-sand-400 font-medium">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant dark:text-on-primary-fixed-variant font-medium">
               $
             </span>
             <input
@@ -326,11 +326,11 @@ export default function ProductForm({ producto }: ProductFormProps) {
               onChange={handlePrecioChange}
               onBlur={handlePrecioBlur}
               onFocus={handlePrecioFocus}
-              className="w-full pl-8 pr-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+              className="w-full pl-8 pr-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
               placeholder="0,00"
             />
           </div>
-          <p className="mt-1 text-xs text-gray-500 dark:text-sand-400">
+          <p className="mt-1 text-xs text-on-surface-variant dark:text-on-primary-fixed-variant">
             Usa coma para decimales (ej: 1.299,99)
           </p>
         </div>
@@ -339,7 +339,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
         <div>
           <label
             htmlFor="stock"
-            className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-2"
+            className="block text-sm font-medium text-on-surface dark:text-on-primary mb-2"
           >
             Stock *
           </label>
@@ -353,17 +353,17 @@ export default function ProductForm({ producto }: ProductFormProps) {
             onChange={handleStockChange}
             onBlur={handleStockBlur}
             onFocus={handleStockFocus}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+            className="w-full px-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
             placeholder="0"
           />
-          <p className="mt-1 text-xs text-gray-500 dark:text-sand-400">
+          <p className="mt-1 text-xs text-on-surface-variant dark:text-on-primary-fixed-variant">
             Cantidad disponible
           </p>
         </div>
 
         {/* Imagen URL */}
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-3">
+          <label className="block text-sm font-medium text-on-surface dark:text-on-primary mb-3">
             Imagen del producto
           </label>
 
@@ -374,8 +374,8 @@ export default function ProductForm({ producto }: ProductFormProps) {
               onClick={() => setUploadMode('url')}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 uploadMode === 'url'
-                  ? 'bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] text-white'
-                  : 'bg-gray-100 dark:bg-charcoal-700 text-gray-600 dark:text-sand-400 hover:bg-gray-200 dark:hover:bg-charcoal-600'
+                  ? 'bg-gradient-primary text-on-primary'
+                  : 'bg-surface-container dark:bg-primary text-on-surface-variant dark:text-on-primary-fixed-variant hover:bg-surface-container-high dark:hover:bg-primary-container'
               }`}
             >
               🔗 URL
@@ -385,8 +385,8 @@ export default function ProductForm({ producto }: ProductFormProps) {
               onClick={() => setUploadMode('file')}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 uploadMode === 'file'
-                  ? 'bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] text-white'
-                  : 'bg-gray-100 dark:bg-charcoal-700 text-gray-600 dark:text-sand-400 hover:bg-gray-200 dark:hover:bg-charcoal-600'
+                  ? 'bg-gradient-primary text-on-primary'
+                  : 'bg-surface-container dark:bg-primary text-on-surface-variant dark:text-on-primary-fixed-variant hover:bg-surface-container-high dark:hover:bg-primary-container'
               }`}
             >
               📤 Subir imagen
@@ -402,10 +402,10 @@ export default function ProductForm({ producto }: ProductFormProps) {
                 type="url"
                 value={formData.imagen}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+                className="w-full px-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
                 placeholder="https://example.com/imagen.jpg"
               />
-              <p className="mt-2 text-sm text-gray-500 dark:text-sand-400">
+              <p className="mt-2 text-sm text-on-surface-variant dark:text-on-primary-fixed-variant">
                 Puedes usar URLs de Unsplash, Imgur, o tu propio hosting
               </p>
             </div>
@@ -423,18 +423,18 @@ export default function ProductForm({ producto }: ProductFormProps) {
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
                 disabled={uploading}
-                className="w-full px-4 py-3 border-2 border-dashed border-gray-300 dark:border-sand-200/30 rounded-lg hover:border-[#D74B4B] dark:hover:border-[#8B3A3A] hover:bg-[#D74B4B]/5 dark:hover:bg-[#8B3A3A]/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-3 border-2 border-dashed border-on-surface/20 dark:border-on-primary/20 rounded-lg hover:border-secondary hover:bg-secondary/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {uploading ? (
                   <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5 text-[#D74B4B] dark:text-[#D97676]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin h-5 w-5 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                     Subiendo...
                   </span>
                 ) : (
-                  <span className="flex items-center justify-center gap-2 text-gray-600 dark:text-sand-400">
+                  <span className="flex items-center justify-center gap-2 text-on-surface-variant dark:text-on-primary-fixed-variant">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                     </svg>
@@ -442,7 +442,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
                   </span>
                 )}
               </button>
-              <p className="mt-2 text-sm text-gray-500 dark:text-sand-400">
+              <p className="mt-2 text-sm text-on-surface-variant dark:text-on-primary-fixed-variant">
                 JPG, PNG, WEBP o GIF. Máximo 5MB
               </p>
             </div>
@@ -451,8 +451,8 @@ export default function ProductForm({ producto }: ProductFormProps) {
           {/* Preview de la imagen */}
           {formData.imagen && (
             <div className="mt-4">
-              <p className="text-sm font-medium text-gray-700 dark:text-sand-300 mb-2">Preview:</p>
-              <div className="relative w-full h-64 bg-gray-100 dark:bg-charcoal-700 rounded-lg overflow-hidden border-2 border-gray-200 dark:border-sand-200/20">
+              <p className="text-sm font-medium text-on-surface dark:text-on-primary mb-2">Preview:</p>
+              <div className="relative w-full h-64 bg-surface-container dark:bg-primary rounded-lg overflow-hidden">
                 <img
                   src={formData.imagen}
                   alt="Preview"
@@ -480,7 +480,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
         <div className="md:col-span-2">
           <label
             htmlFor="descripcion"
-            className="block text-sm font-medium text-gray-700 dark:text-sand-300 mb-2"
+            className="block text-sm font-medium text-on-surface dark:text-on-primary mb-2"
           >
             Descripción
           </label>
@@ -490,7 +490,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
             rows={5}
             value={formData.descripcion}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-sand-200/30 rounded-lg focus:ring-2 focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] focus:border-transparent bg-white dark:bg-charcoal-700 text-gray-900 dark:text-sand-50 transition-colors"
+            className="w-full px-4 py-2 border border-on-surface/20 dark:border-on-primary/20 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent bg-surface dark:bg-primary text-on-surface dark:text-on-primary transition-colors"
             placeholder="Descripción detallada del producto..."
           />
         </div>
@@ -503,9 +503,9 @@ export default function ProductForm({ producto }: ProductFormProps) {
               type="checkbox"
               checked={formData.activo}
               onChange={handleChange}
-              className="w-5 h-5 text-[#D74B4B] border-gray-300 dark:border-sand-200/30 rounded focus:ring-[#D74B4B] dark:focus:ring-[#8B3A3A] bg-white dark:bg-charcoal-700"
+              className="w-5 h-5 text-secondary border-on-surface/20 dark:border-on-primary/20 rounded focus:ring-secondary bg-surface dark:bg-primary"
             />
-            <span className="text-sm font-medium text-gray-700 dark:text-sand-300">
+            <span className="text-sm font-medium text-on-surface dark:text-on-primary">
               Producto activo (visible en la tienda)
             </span>
           </label>
@@ -517,7 +517,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
         <button
           type="submit"
           disabled={loading}
-          className="bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] dark:to-[#6B2E2E] text-white px-6 py-3 rounded-lg font-semibold hover:from-[#8B3A3A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all border-2 border-charcoal-900 dark:border-sand-200/30"
+          className="bg-gradient-primary text-on-primary px-6 py-3 rounded-lg font-semibold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
         >
           {loading
             ? 'Guardando...'
@@ -529,7 +529,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="bg-gray-200 dark:bg-charcoal-700 text-gray-700 dark:text-sand-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-charcoal-600 transition-colors border-2 border-gray-300 dark:border-sand-200/30"
+          className="bg-surface-container dark:bg-primary text-on-surface dark:text-on-primary px-6 py-3 rounded-lg font-semibold hover:bg-surface-container-high dark:hover:bg-primary-container transition-colors"
         >
           Cancelar
         </button>
