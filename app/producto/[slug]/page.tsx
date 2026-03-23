@@ -120,10 +120,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {/* Stock Info with gradients */}
               <div className="mb-8">
                 {producto.stock > 0 ? (
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E8D2D2] dark:bg-[#8B3A3A]/20 border-2 border-[#8B3A3A] dark:border-[#D74B4B] rounded-lg transition-colors">
-                    <div className="w-2 h-2 bg-[#8B3A3A] dark:bg-[#D74B4B] rounded-full animate-pulse"></div>
-                    <p className="text-[#3D2424] dark:text-[#D74B4B] font-bold transition-colors">
-                      En stock ({producto.stock} disponibles)
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/20 border-2 border-emerald-600 dark:border-emerald-500 rounded-lg transition-colors">
+                    <div className="w-2 h-2 bg-emerald-600 dark:bg-emerald-400 rounded-full animate-pulse"></div>
+                    <p className="text-emerald-800 dark:text-emerald-300 font-bold transition-colors">
+                      Disponible ahora ({producto.stock} unidades)
                     </p>
                   </div>
                 ) : (

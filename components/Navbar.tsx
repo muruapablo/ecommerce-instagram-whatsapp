@@ -41,13 +41,13 @@ export default function Navbar() {
 
       <nav className="bg-sand-50/80 dark:bg-charcoal-900/80 backdrop-blur-md border-b-2 border-charcoal-900 dark:border-sand-200/20 sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-20 gap-3">
             {/* Logo / Store Name with gradient */}
-            <Link href="/" className="group flex items-center gap-3">
-              <div className="relative">
+            <Link href="/" className="group flex items-center gap-3 min-w-0">
+              <div className="relative min-w-0">
                 {/* Animated gradient accent behind text */}
                 <div className="absolute -inset-2 bg-gradient-to-r from-[#D74B4B]/20 to-[#8B3A3A]/20 opacity-20 dark:opacity-30 rounded-lg transform -rotate-1 group-hover:rotate-1 transition-all duration-300 blur-md"></div>
-                <span className="relative text-2xl sm:text-3xl md:text-4xl font-black text-charcoal-900 dark:text-sand-50 tracking-tight transition-colors">
+                <span className="relative block truncate max-w-[44vw] sm:max-w-none text-xl sm:text-3xl md:text-4xl font-black text-charcoal-900 dark:text-sand-50 tracking-tight transition-colors">
                   {store.name}
                 </span>
               </div>
@@ -56,11 +56,11 @@ export default function Navbar() {
             {/* Actions */}
             <div className="flex items-center gap-2 sm:gap-4">
               {/* Main action buttons (Search, Instagram, WhatsApp) */}
-              <div className="flex items-center gap-2 sm:gap-3">
+              <div className="flex items-center gap-1.5 sm:gap-3">
                 {/* Search Button */}
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="group relative p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#D74B4B] hover:to-[#8B3A3A] dark:hover:from-[#8B3A3A] dark:hover:to-[#6B2E2E] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
+                  className="group relative p-2.5 sm:p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#D74B4B] hover:to-[#8B3A3A] dark:hover:from-[#8B3A3A] dark:hover:to-[#6B2E2E] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
                   aria-label="Buscar productos"
                   aria-expanded={searchOpen}
                 >
@@ -85,7 +85,7 @@ export default function Navbar() {
                     href={`https://instagram.com/${store.instagram}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#8B3A3A] hover:to-[#6B2E2E] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
+                    className="group relative p-2.5 sm:p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#8B3A3A] hover:to-[#6B2E2E] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
                     aria-label="Instagram"
                   >
                     <svg
@@ -105,7 +105,7 @@ export default function Navbar() {
                     href={`https://wa.me/${store.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#5A5A5A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
+                    className="group relative p-2.5 sm:p-3 bg-white dark:bg-charcoal-800 border-2 border-charcoal-900 dark:border-sand-200/30 rounded-lg hover:bg-gradient-to-br hover:from-[#5A5A5A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] hover:border-transparent hover:scale-110 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(26,26,26,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(245,240,228,0.2)]"
                     aria-label="WhatsApp"
                   >
                     <svg

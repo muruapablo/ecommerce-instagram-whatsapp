@@ -46,12 +46,12 @@ export default async function BioPage() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 py-12 max-w-md mx-auto">
+      <div className="relative z-10 px-4 py-10 sm:py-12 max-w-md mx-auto">
         {/* Header with store logo/name - Animated entry */}
         <div className="text-center mb-8 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
           <div className="inline-block p-1 bg-gradient-to-br from-white/20 to-white/5 rounded-2xl backdrop-blur-sm border border-white/30 shadow-2xl mb-4">
             <div className="bg-gradient-to-br from-white via-sand-50 to-white px-8 py-6 rounded-xl">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-[#D74B4B] via-[#8B3A3A] to-[#3D2424] bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-4xl break-words text-balance font-bold bg-gradient-to-r from-[#D74B4B] via-[#8B3A3A] to-[#3D2424] bg-clip-text text-transparent">
                 {store.name}
               </h1>
             </div>
@@ -62,7 +62,7 @@ export default async function BioPage() {
         </div>
 
         {/* Quick Action Buttons */}
-        <div className="grid grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           {/* WhatsApp CTA */}
           <a
             href={`https://wa.me/${store.whatsapp}`}

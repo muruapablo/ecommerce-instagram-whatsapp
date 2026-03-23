@@ -73,7 +73,7 @@ export default function AddToCartButton({ producto, showBuyNow = false }: AddToC
               ? 'bg-charcoal-300 dark:bg-charcoal-700 cursor-not-allowed'
               : added
               ? 'bg-green-600 dark:bg-green-700'
-              : 'bg-gradient-to-r from-[#D74B4B] to-[#8B3A3A] dark:from-[#8B3A3A] dark:to-[#6B2E2E] hover:from-[#8B3A3A] hover:to-[#3D2424] dark:hover:from-[#6B2E2E] dark:hover:to-[#3D2424] shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] dark:shadow-[6px_6px_0px_0px_rgba(139,58,58,0.5)] hover:shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] hover:translate-x-[3px] hover:translate-y-[3px]'
+              : 'bg-gradient-to-r from-[#4A4A4A] to-[#1A1A1A] dark:from-[#5A5A5A] dark:to-[#2A2A2A] hover:from-[#3A3A3A] hover:to-[#121212] dark:hover:from-[#4A4A4A] dark:hover:to-[#1A1A1A] shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] dark:shadow-[6px_6px_0px_0px_rgba(245,240,228,0.2)] hover:shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] hover:translate-x-[3px] hover:translate-y-[3px]'
           }
         `}
       >
