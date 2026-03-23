@@ -63,7 +63,7 @@ export const createPreference = async (data: CheckoutItem | CheckoutItem[]) => {
       /^https:\/\//.test(baseUrl) && !baseUrl.includes('localhost') && !baseUrl.includes('127.0.0.1')
     const shouldUseAutoReturn = /^https:\/\//.test(baseUrl)
 
-    const body: Record<string, unknown> = {
+    const body = {
       items: mpItems,
       back_urls: {
         success: `${baseUrl}/success`,
@@ -75,15 +75,9 @@ export const createPreference = async (data: CheckoutItem | CheckoutItem[]) => {
         product_ids: productIds,
         item_count: items.length,
       },
-    }
-
-    if (shouldUseAutoReturn) {
-      body.auto_return = 'approved'
-    }
-
-    // En local o cuentas nuevas, estos campos opcionales pueden disparar bloqueos de policy.
-    if (shouldSendWebhookUrl) {
-      body.notification_url = `${baseUrl}/api/webhook`
+      ...(shouldUseAutoReturn ? { auto_return: 'approved' as const } : {}),
+      // En local o cuentas nuevas, estos campos opcionales pueden disparar bloqueos de policy.
+      ...(shouldSendWebhookUrl ? { notification_url: `${baseUrl}/api/webhook` } : {}),
     }
 
     const result = await preference.create({ body })
