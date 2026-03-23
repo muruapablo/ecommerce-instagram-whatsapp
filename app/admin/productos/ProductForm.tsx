@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Producto } from '@/lib/supabase'
+import ImageCropModal from '@/components/ImageCropModal'
 
 interface ProductFormProps {
   producto?: Producto
@@ -16,6 +17,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
   const [loading, setLoading] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [uploadMode, setUploadMode] = useState<'url' | 'file'>('url')
+  const [cropFile, setCropFile] = useState<File | null>(null)
   const [formData, setFormData] = useState({
     nombre: producto?.nombre || '',
     slug: producto?.slug || '',
@@ -186,27 +188,29 @@ export default function ProductForm({ producto }: ProductFormProps) {
     }
   }
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Step 1: intercept file pick → open crop modal
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
+    // Reset input so same file can be re-selected after cancel
+    e.target.value = ''
+    setCropFile(file)
+  }
 
+  // Step 2: after crop confirmed → upload the cropped file
+  const handleCropConfirm = async (croppedFile: File) => {
+    setCropFile(null)
     setUploading(true)
-
     try {
-      const formData = new FormData()
-      formData.append('file', file)
-
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      })
-
+      const data = new FormData()
+      data.append('file', croppedFile)
+      const response = await fetch('/api/upload', { method: 'POST', body: data })
       if (response.ok) {
         const { url } = await response.json()
         setFormData((prev) => ({ ...prev, imagen: url }))
       } else {
-        const data = await response.json()
-        alert(data.error || 'Error al subir la imagen')
+        const body = await response.json()
+        alert(body.error || 'Error al subir la imagen')
       }
     } catch (_error) {
       alert('Error al subir la imagen')
@@ -214,6 +218,32 @@ export default function ProductForm({ producto }: ProductFormProps) {
       setUploading(false)
     }
   }
+
+  // Crop an image that is already set via URL → proxy fetch → open crop modal
+  const handleCropFromUrl = async () => {
+    if (!formData.imagen) return
+    setCropFile(null)
+    setUploading(true)
+    try {
+      const res = await fetch(`/api/proxy-image?url=${encodeURIComponent(formData.imagen)}`)
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        alert(body.error || 'No se pudo cargar la imagen para recortar')
+        return
+      }
+      const blob = await res.blob()
+      const ext = blob.type.split('/')[1] || 'jpg'
+      const file = new File([blob], `imagen.${ext}`, { type: blob.type })
+      setCropFile(file)
+    } catch {
+      alert('Error al cargar la imagen')
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  // Legacy direct upload (kept for safety, not used)
+  const handleFileUpload = handleFileSelect
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -259,6 +289,7 @@ export default function ProductForm({ producto }: ProductFormProps) {
   }
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="bg-surface-container-lowest dark:bg-primary-container rounded-lg shadow-sm p-6">
       <div className="grid md:grid-cols-2 gap-6">
         {/* Nombre */}
@@ -461,6 +492,26 @@ export default function ProductForm({ producto }: ProductFormProps) {
                     (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Imagen+no+disponible'
                   }}
                 />
+                {/* Crop button */}
+                <button
+                  type="button"
+                  onClick={handleCropFromUrl}
+                  disabled={uploading}
+                  className="absolute top-2 right-12 bg-secondary text-on-secondary p-2 rounded-full hover:opacity-90 transition-opacity shadow-lg disabled:opacity-50"
+                  title="Recortar imagen"
+                >
+                  {uploading ? (
+                    <svg className="animate-spin w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h1M4 8V7a2 2 0 012-2h1m10 11h1a2 2 0 002-2v-1m0-8V7a2 2 0 00-2-2h-1M9 9h6v6H9V9z" />
+                    </svg>
+                  )}
+                </button>
+                {/* Delete button */}
                 <button
                   type="button"
                   onClick={() => setFormData((prev) => ({ ...prev, imagen: '' }))}
@@ -535,5 +586,15 @@ export default function ProductForm({ producto }: ProductFormProps) {
         </button>
       </div>
     </form>
+
+    {/* Image crop modal */}
+    {cropFile && (
+      <ImageCropModal
+        file={cropFile}
+        onConfirm={handleCropConfirm}
+        onCancel={() => setCropFile(null)}
+      />
+    )}
+  </>
   )
 }
